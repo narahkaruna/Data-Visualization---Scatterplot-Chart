@@ -46,13 +46,13 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 	  .attr('transform', `translate(${padding}, 0)`)
 	  .call(yAxis)
 	  
-	svg.selectAll('circles')
+	svg.selectAll('circle')
 	   .data(data)
 	   .enter()
-	   .append('circles')
+	   .append('circle')
 	   .attr('class', 'dot')
-	   .attr('cx', (d, i) => years[i])
-	   .attr('cy', (d, i) => minutes[i])
+	   .attr('cx', (d, i) => xScale(d.Year))
+	   .attr('cy', (d, i) => yScale(parsedTime[i]))
 	   .attr('r', 5)
 	
 })
