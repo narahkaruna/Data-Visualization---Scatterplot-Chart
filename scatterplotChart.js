@@ -34,7 +34,7 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 	const title = svg.append('text')
     .attr('id', 'title')
     .attr('x', (width/2) - padding)
-	  .attr('y', 30)
+	.attr('y', 30)
     .text('Doping in Professional Cycling')
 	
 	svg.append('g')
@@ -52,9 +52,13 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 	   .enter()
 	   .append('circle')
 	   .attr('class', 'dot')
+	   .attr('data-xvalue', xScale(d.Year))
+	   .attr('data-yvalue', yScale(parsedTime[i]))
 	   .attr('cx', (d, i) => xScale(d.Year))
 	   .attr('cy', (d, i) => yScale(parsedTime[i]))
 	   .attr('r', 5)
+	   .attr('fill', d => d.Doping ? "red": "blue")
+
 	
 })
 
