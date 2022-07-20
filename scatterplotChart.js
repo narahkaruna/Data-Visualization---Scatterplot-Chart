@@ -1,7 +1,7 @@
 d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json")
 .then(data => {
 	
-	const years = data.map(d => new Date(d.Year));
+	//const years = data.map(d => d3.timeParse("%Y")(d.Year));
 	const  formatTime= "%M:%S";
 	const parsedTime = data.map(d => {
     	return d3.timeParse(formatTime)(d.Time);
@@ -12,14 +12,15 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 	const padding = 60;
 	
 	const xScale = d3.scaleLinear()
-	   .domain([d3.min(data, d => d.Year) + 1, d3.max(data, d => d.Year) + 1])
+	   .domain([d3.min(data, d => d.Year - 1), d3.max(data, d => d.Year + 1)])
 	   .range([padding, width - padding])
 	
 	const yScale = d3.scaleTime()
 	   .domain([d3.min(parsedTime, d => d), d3.max(parsedTime, d => d)])
 	   .range([height - padding, padding])
 	
-	const xAxis = d3.axisBottom(xScale);
+	const xAxis = d3.axisBottom(xScale)
+	   .tickFormat(d => d3.timeFormat(d))
 
 	const yAxis = d3.axisLeft(yScale)
 	   .tickFormat(d => d3.timeFormat(formatTime)(d))
