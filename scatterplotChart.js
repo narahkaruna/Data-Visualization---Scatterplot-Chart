@@ -57,8 +57,18 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 	   .attr('cx', (d, i) => xScale(d.Year))
 	   .attr('cy', (d, i) => yScale(parsedTime[i]))
 	   .attr('r', 5)
-	   .attr('fill', d => d.Doping ? "red": "blue")
-
+	   //.attr('fill', d => d.Doping ? "red": "blue")
+	   //.on('mouseover', function(){})
+	   
+	const tooltip = d3.select('#scatterplot-chart')
+	   .append('div')
+	   .attr('id', 'tooltip')
+	   .style('width', '100px')
+	   .style('background', 'whitesmoke')
+	   .style('border', 'solid')
+	   .style('border-width', '1px')
+	   .style('border-radius', '5px')
+	   //.style('visibility', 'hidden')
 	
 })
 
