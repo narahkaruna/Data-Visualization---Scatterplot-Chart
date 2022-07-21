@@ -1,6 +1,14 @@
+main {
+	position: relative;
+}
+
 #scatterplot-chart {
 	width: 98%;
 	margin: 20px auto;
+}
+
+#tooltip {
+	position: absolute;
 }
 
 .dot {
