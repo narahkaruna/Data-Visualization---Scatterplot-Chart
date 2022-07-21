@@ -2,3 +2,12 @@
 	width: 98%;
 	margin: 20px auto;
 }
+
+.dot {
+	stroke:#333;
+	stroke-width: 0.5px;
+}
+
+.dot:hover {
+	fill: green;
+}
